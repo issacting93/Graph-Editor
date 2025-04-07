@@ -1,5 +1,5 @@
-import React from 'react';
-import { ConnectionType } from '../lib/store/editor-store';
+import React from "react";
+import { ConnectionType } from "../lib/store/editor-store";
 
 interface ConnectionLineProps {
   sourceX: number;
@@ -14,14 +14,14 @@ interface ConnectionLineProps {
 
 const getConnectionStyle = (type: ConnectionType) => {
   switch (type) {
-    case 'causal':
-      return 'stroke-cyber-red';
-    case 'temporal':
-      return 'stroke-cyber-blue';
-    case 'conditional':
-      return 'stroke-cyber-pink';
-    case 'reference':
-      return 'stroke-cyber-muted';
+    case "causal":
+      return "stroke-cyber-red";
+    case "temporal":
+      return "stroke-cyber-blue";
+    case "conditional":
+      return "stroke-cyber-pink";
+    case "reference":
+      return "stroke-cyber-muted";
   }
 };
 
@@ -38,7 +38,9 @@ export const ConnectionLine: React.FC<ConnectionLineProps> = ({
   // Calculate control points for a curved line
   const midX = (sourceX + targetX) / 2;
   const midY = (sourceY + targetY) / 2;
-  const distance = Math.sqrt(Math.pow(targetX - sourceX, 2) + Math.pow(targetY - sourceY, 2));
+  const distance = Math.sqrt(
+    Math.pow(targetX - sourceX, 2) + Math.pow(targetY - sourceY, 2),
+  );
   const curveHeight = Math.min(distance * 0.2, 50);
 
   // Create a curved path
@@ -52,7 +54,7 @@ export const ConnectionLine: React.FC<ConnectionLineProps> = ({
         d={path}
         fill="none"
         className={`${getConnectionStyle(type)} stroke-2 transition-all duration-200
-          ${isSelected ? 'stroke-[3px]' : ''}`}
+          ${isSelected ? "stroke-[3px]" : ""}`}
       />
 
       {/* Arrow head */}
@@ -95,4 +97,4 @@ export const ConnectionLine: React.FC<ConnectionLineProps> = ({
       )}
     </g>
   );
-}; 
+};

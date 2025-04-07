@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { 
-  ZoomIn, 
-  ZoomOut, 
-  Grid, 
-  RefreshCw, 
-  Save, 
-  Download, 
+import React, { useState } from "react";
+import {
+  ZoomIn,
+  ZoomOut,
+  Grid,
+  RefreshCw,
+  Save,
+  Download,
   Upload,
   Clipboard,
   Layers,
@@ -13,8 +13,8 @@ import {
   EyeOff,
   AlignLeft,
   Settings,
-  Trash
-} from 'lucide-react';
+  Trash,
+} from "lucide-react";
 
 type ToolbarProps = {
   onZoomIn: () => void;
@@ -35,25 +35,29 @@ export const CanvasTools: React.FC<ToolbarProps> = ({
   onExport,
   onImport,
   onSave,
-  showGrid
+  showGrid,
 }) => {
   const [activeTool, setActiveTool] = useState<string | null>(null);
-  const [viewMode, setViewMode] = useState<'standard' | 'timeline' | 'cluster'>('standard');
+  const [viewMode, setViewMode] = useState<"standard" | "timeline" | "cluster">(
+    "standard",
+  );
 
   return (
     <div className="absolute top-4 left-4 z-10 flex flex-col gap-2">
       {/* Main Toolbar */}
-      <div className="bg-cyber-dark-900/90 backdrop-blur-sm border border-cyber-muted rounded-lg
-        shadow-lg p-1 flex flex-col gap-1">
+      <div
+        className="bg-cyber-dark-900/90 backdrop-blur-sm border border-cyber-muted rounded-lg
+        shadow-lg p-1 flex flex-col gap-1"
+      >
         <div className="grid grid-cols-2 gap-1">
-          <button 
+          <button
             onClick={onZoomIn}
             className="w-8 h-8 flex items-center justify-center rounded hover:bg-cyber-blue/20 text-white"
             title="Zoom In"
           >
             <ZoomIn size={16} />
           </button>
-          <button 
+          <button
             onClick={onZoomOut}
             className="w-8 h-8 flex items-center justify-center rounded hover:bg-cyber-blue/20 text-white"
             title="Zoom Out"
@@ -61,21 +65,21 @@ export const CanvasTools: React.FC<ToolbarProps> = ({
             <ZoomOut size={16} />
           </button>
         </div>
-        
+
         <div className="border-t border-cyber-muted my-1"></div>
-        
+
         <div className="grid grid-cols-2 gap-1">
-          <button 
+          <button
             onClick={onAutoLayout}
             className="w-8 h-8 flex items-center justify-center rounded hover:bg-cyber-blue/20 text-white"
             title="Auto Layout"
           >
             <RefreshCw size={16} />
           </button>
-          <button 
+          <button
             onClick={onToggleGrid}
             className={`w-8 h-8 flex items-center justify-center rounded 
-              ${showGrid ? 'bg-cyber-blue/30' : 'hover:bg-cyber-blue/20'} text-white`}
+              ${showGrid ? "bg-cyber-blue/30" : "hover:bg-cyber-blue/20"} text-white`}
             title="Toggle Grid"
           >
             <Grid size={16} />
@@ -84,29 +88,31 @@ export const CanvasTools: React.FC<ToolbarProps> = ({
       </div>
 
       {/* View Modes */}
-      <div className="bg-cyber-dark-900/90 backdrop-blur-sm border border-cyber-muted rounded-lg
-        shadow-lg p-1">
+      <div
+        className="bg-cyber-dark-900/90 backdrop-blur-sm border border-cyber-muted rounded-lg
+        shadow-lg p-1"
+      >
         <div className="flex flex-col gap-1">
-          <button 
-            onClick={() => setViewMode('standard')}
+          <button
+            onClick={() => setViewMode("standard")}
             className={`w-8 h-8 flex items-center justify-center rounded 
-              ${viewMode === 'standard' ? 'bg-cyber-blue/30' : 'hover:bg-cyber-blue/20'} text-white`}
+              ${viewMode === "standard" ? "bg-cyber-blue/30" : "hover:bg-cyber-blue/20"} text-white`}
             title="Standard View"
           >
             <Layers size={16} />
           </button>
-          <button 
-            onClick={() => setViewMode('timeline')}
+          <button
+            onClick={() => setViewMode("timeline")}
             className={`w-8 h-8 flex items-center justify-center rounded 
-              ${viewMode === 'timeline' ? 'bg-cyber-blue/30' : 'hover:bg-cyber-blue/20'} text-white`}
+              ${viewMode === "timeline" ? "bg-cyber-blue/30" : "hover:bg-cyber-blue/20"} text-white`}
             title="Timeline View"
           >
             <AlignLeft size={16} />
           </button>
-          <button 
-            onClick={() => setViewMode('cluster')}
+          <button
+            onClick={() => setViewMode("cluster")}
             className={`w-8 h-8 flex items-center justify-center rounded 
-              ${viewMode === 'cluster' ? 'bg-cyber-blue/30' : 'hover:bg-cyber-blue/20'} text-white`}
+              ${viewMode === "cluster" ? "bg-cyber-blue/30" : "hover:bg-cyber-blue/20"} text-white`}
             title="Cluster View"
           >
             <Eye size={16} />
@@ -115,24 +121,26 @@ export const CanvasTools: React.FC<ToolbarProps> = ({
       </div>
 
       {/* File Operations */}
-      <div className="bg-cyber-dark-900/90 backdrop-blur-sm border border-cyber-muted rounded-lg
-        shadow-lg p-1">
+      <div
+        className="bg-cyber-dark-900/90 backdrop-blur-sm border border-cyber-muted rounded-lg
+        shadow-lg p-1"
+      >
         <div className="flex flex-col gap-1">
-          <button 
+          <button
             onClick={onSave}
             className="w-8 h-8 flex items-center justify-center rounded hover:bg-cyber-blue/20 text-white"
             title="Save"
           >
             <Save size={16} />
           </button>
-          <button 
+          <button
             onClick={onExport}
             className="w-8 h-8 flex items-center justify-center rounded hover:bg-cyber-blue/20 text-white"
             title="Export"
           >
             <Download size={16} />
           </button>
-          <button 
+          <button
             onClick={onImport}
             className="w-8 h-8 flex items-center justify-center rounded hover:bg-cyber-blue/20 text-white"
             title="Import"
@@ -143,9 +151,11 @@ export const CanvasTools: React.FC<ToolbarProps> = ({
       </div>
 
       {/* Settings */}
-      <div className="bg-cyber-dark-900/90 backdrop-blur-sm border border-cyber-muted rounded-lg
-        shadow-lg p-1">
-        <button 
+      <div
+        className="bg-cyber-dark-900/90 backdrop-blur-sm border border-cyber-muted rounded-lg
+        shadow-lg p-1"
+      >
+        <button
           className="w-8 h-8 flex items-center justify-center rounded hover:bg-cyber-blue/20 text-white"
           title="Settings"
         >

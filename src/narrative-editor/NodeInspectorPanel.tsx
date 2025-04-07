@@ -1,5 +1,5 @@
-import React from 'react';
-import { useEditorStore } from '../lib/store/editor-store';
+import React from "react";
+import { useEditorStore } from "../lib/store/editor-store";
 
 export const NodeInspectorPanel: React.FC = () => {
   const selectedNodeId = useEditorStore((state) => state.selectedNodeId);
@@ -11,7 +11,9 @@ export const NodeInspectorPanel: React.FC = () => {
   if (!selectedNode) {
     return (
       <div className="w-80 h-full bg-cyber-dark p-4 border-l border-cyber-muted">
-        <h2 className="text-xl font-bold mb-4 text-white uppercase tracking-wider">Node Inspector</h2>
+        <h2 className="text-xl font-bold mb-4 text-white uppercase tracking-wider">
+          Node Inspector
+        </h2>
         <p className="text-cyber-muted text-sm">Select a node to inspect</p>
       </div>
     );
@@ -19,7 +21,9 @@ export const NodeInspectorPanel: React.FC = () => {
 
   return (
     <div className="w-80 h-full bg-cyber-dark p-4 border-l border-cyber-muted overflow-y-auto">
-      <h2 className="text-xl font-bold mb-4 text-white uppercase tracking-wider">Node Inspector</h2>
+      <h2 className="text-xl font-bold mb-4 text-white uppercase tracking-wider">
+        Node Inspector
+      </h2>
       <div className="space-y-4">
         <div>
           <label className="block text-sm font-medium text-cyber-muted mb-1 uppercase tracking-wider">
@@ -38,7 +42,10 @@ export const NodeInspectorPanel: React.FC = () => {
               value={selectedNode.attributes.name}
               onChange={(e) =>
                 updateNode(selectedNode.id, {
-                  attributes: { ...selectedNode.attributes, name: e.target.value },
+                  attributes: {
+                    ...selectedNode.attributes,
+                    name: e.target.value,
+                  },
                 })
               }
               className="w-full bg-cyber-muted/20 text-white rounded px-3 py-2 font-mono
@@ -93,4 +100,4 @@ export const NodeInspectorPanel: React.FC = () => {
       </div>
     </div>
   );
-}; 
+};
